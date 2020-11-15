@@ -8,7 +8,6 @@ const router = express.Router();
 const middleware = (req, res, next) => {
     // Model validation
     const model = req.body;
-    console.log(model);
     if(JSON.stringify(model) !== '{}') {
         if(model.question && model.answers && model.answers.length) {
             next();
@@ -52,7 +51,6 @@ router.patch('/:id', async (req, res) => {
     if(IsIdValid(id)) {
         const model = req.body;
         const updated = await questionModel.findByIdAndUpdate(id, model);
-        console.log(updated);
         res.json(updated);
     } else {
         res.status(400).json({error: 'Cannot update question'});

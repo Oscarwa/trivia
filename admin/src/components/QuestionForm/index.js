@@ -111,7 +111,6 @@ export default function QuestionForm() {
                 body: JSON.stringify(question),
             });
         }
-        console.log(res);
         if(res.ok) {
             cancel();
             refreshQuestions();
