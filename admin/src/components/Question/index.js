@@ -15,7 +15,8 @@ function Question(props) {
     } = props;
 
     const remove = async () => {
-        const res = await fetch(`http://localhost:8080/api/questions/${_id}`, {
+        const { REACT_APP_API_URL } = process.env;
+        const res = await fetch(`${REACT_APP_API_URL}/api/questions/${_id}`, {
             method: 'DELETE',
         });
         if(res.ok) {

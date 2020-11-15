@@ -30,6 +30,7 @@ button.primary {
 
 .a {
     display: flex;
+    margin: 0.5rem 0;
 }
 
 .a input{
@@ -40,4 +41,15 @@ button.primary {
 }
 .a i {
     cursor: pointer;
+}
+
+.categories {
+    padding: 1rem 0;
+}
+.categories > * {
+    margin: 0 0.5rem 0.5rem 0;
+}
+
+.section {
+    margin-bottom: 1rem;
 }

@@ -8,8 +8,9 @@ const QuestionSchema = new mongoose.Schema({
             correct: { type: Boolean, default: false }
         }
     ],
-    level: {type: Number, default: 50},
-    category: { type: String, default: 'text' }
+    level: {type: String, enum: ['easy', 'normal', 'hard', 'expert']},
+    type: { type: String, default: 'text' },
+    category: { type: String }
 }, {
     versionKey: false
 });
