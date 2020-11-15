@@ -1,0 +1,33 @@
+.question {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin-bottom: 0.2rem;
+    display: flex;
+    justify-content: space-between;
+    cursor: default;
+}
+.question.text {
+    background: #AAA;
+    color: #333;
+}
+.question.audio {
+    background: rgb(123, 140, 197);
+    color: #333;
+}
+
+.cat {
+    font-size: 0.9rem;
+    margin-left: 2rem;
+}
+
+.actions i {
+    cursor: pointer;
+    margin: 0 0.2rem;
+    color: #777;
+}
+
+.actions i:hover {
+    text-decoration: underline;
+    color: #555;
+}

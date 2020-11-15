@@ -1,7 +1,10 @@
 const express = require('express');
 const morgan = require('morgan');
-const { generatePin } = require('./utils');
+const cors = require('cors');
+
 require('dotenv').config();
+
+const { generatePin } = require('./utils');
 const db = require('./db');
 
 
@@ -10,6 +13,7 @@ const app = express();
 
 // Middleware
 app.use(morgan('dev'));
+app.use(cors());
 app.use(express.json())
 
 // Routes
@@ -17,7 +21,7 @@ app.get('/', (req, res) => {
     res.json({code: generatePin()});
 })
 
-app.use('/api/question', require('./api/questions'));
+app.use('/api/questions', require('./api/questions'));
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);

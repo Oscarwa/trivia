@@ -5,11 +5,11 @@ const QuestionSchema = new mongoose.Schema({
     answers: [
         {
             text: String,
-            correct: Boolean
+            correct: { type: Boolean, default: false }
         }
     ],
-    level: Number,
-    category: String
+    level: {type: Number, default: 50},
+    category: { type: String, default: 'text' }
 }, {
     versionKey: false
 });

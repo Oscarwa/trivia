@@ -1,0 +1,43 @@
+.form {
+    padding: 1rem;
+    margin: 1rem auto;
+    border: 1px solid #666;
+    border-radius: 10px;
+    background-color: #ddd;
+}
+input {
+    width: 100%;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+.actions button {
+    margin-left: 0.5rem;
+}
+button {
+    padding: 5px;
+    border: 1px solid #666;
+    border-radius: 5px;
+}
+button.primary {
+    background-color: #666;
+    color: #ddd;
+    font-weight: bold;
+}
+
+.a {
+    display: flex;
+}
+
+.a input{
+    flex: 95;
+}
+.a input[type='radio'] {
+    flex: 5;
+}
+.a i {
+    cursor: pointer;
+}

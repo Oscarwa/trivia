@@ -13,5 +13,5 @@ const generatePin = () => {
 }
 
 module.exports = {
-	generatePin
+  generatePin
 };
