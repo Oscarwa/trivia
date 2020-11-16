@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { generatePin, sanitizeString } = require('../utils');
+const socket = require('../socket');
 
 const gameModel = require('../db/game');
 
@@ -19,6 +20,7 @@ router.post('/create', async (req, res) => {
             ]
         };
         const command = await gameModel.create(model);
+        ioConnect(socket.io, command.code);
         res.json(command);
     } else {
         res.json({error: 'No name provided'});
@@ -38,6 +40,7 @@ router.post('/join/:code', async (req, res) => {
             else {
                 game.players.push({name: cleanName, displayName: name, score: 0});
                 const dbRes = await game.save();
+                ioConnect(socket.io, dbRes.code);
                 res.json(dbRes);
             }
             //res.json(game);
@@ -60,25 +63,9 @@ router.get('/:code', async (req, res) => {
     }
 });
 
-// router.delete('/:id', async (req, res) => {
-//     const id = req.params.id.toString().trim();
-//     if(id) {
-//         const deleted = await questionModel.findByIdAndRemove(id);
-//         res.json({success: deleted !== null});
-//     } else {
-//         res.status(400).json({error: 'Cannot delete question'});
-//     }
-// });
-
-// router.patch('/:id', async (req, res) => {
-//     const id = req.params.id;
-//     if(IsIdValid(id)) {
-//         const model = req.body;
-//         const updated = await questionModel.findByIdAndUpdate(id, model);
-//         res.json(updated);
-//     } else {
-//         res.status(400).json({error: 'Cannot update question'});
-//     }
-// });
+const ioConnect = (io, code) => {
+    io.emit('WS', 'test');
+    io.emit(`game/${code}`, 'user connected');
+}
 
 module.exports = router;
