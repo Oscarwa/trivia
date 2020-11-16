@@ -2,6 +2,9 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 
+const questionRoutes = require('./api/questions');
+const gameRoutes = require('./api/game');
+
 require('dotenv').config();
 
 const { generatePin } = require('./utils');
@@ -21,7 +24,8 @@ app.get('/', (req, res) => {
     res.json({code: generatePin()});
 })
 
-app.use('/api/questions', require('./api/questions'));
+app.use('/api/questions', questionRoutes);
+app.use('/api/game', gameRoutes);
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);

@@ -148,7 +148,7 @@ export default function QuestionForm() {
             </div>
             <div className="categories">
                 <div><span>Category</span></div>
-                { categories.map(c => <button key={c} className={ c == question.category ? 'primary' : null} onClick={() => updateCategory(c)}>{c}</button>)}
+                { categories.map(c => <button key={c} className={ c === question.category ? 'primary' : null} onClick={() => updateCategory(c)}>{c}</button>)}
             </div>
             <div className="actions">
                 <button onClick={cancel}>Cancel</button>
