@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 const { QuestionSchema } = require('./question');
 
+const gameStates = {
+    waiting: 'wait',
+    active: 'active',
+    finished: 'finish'
+};
+
 const GameSchema = new mongoose.Schema({
     code: String,
     admin: String,
@@ -12,11 +18,18 @@ const GameSchema = new mongoose.Schema({
         }
     ],
     questions: [QuestionSchema],
-    
+    state: {type: String, enum: Object.values(gameStates), default: gameStates.waiting},
+    maxPlayers: {type: Number, default: 2},
+    type: {type: String, default: 'points'},
+    createdOn: {type: Date, default: Date.now }
 }, {
     versionKey: false
 });
 
+
 const gameModel = mongoose.model('game', GameSchema);
 
-module.exports = gameModel;
+module.exports = {
+    gameModel,
+    gameStates
+};
